@@ -4,7 +4,7 @@ const Home = () => {
 
   const options = [
     {
-      value: 'Default',
+      value: 'default',
       label: 'Please choose an option'
     },
     {
