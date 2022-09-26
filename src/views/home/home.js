@@ -24,7 +24,7 @@ const Home = () => {
   return <div>
     <div>
       <input/>
-      <Select options={options}/>
+      <Select options={options} defaultValue={options[0]}/>
       <button>hejsan222</button>
     </div> 
   </div>
