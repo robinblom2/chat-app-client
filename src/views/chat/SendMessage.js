@@ -4,7 +4,7 @@ const SendMessage = ({ socket, username, room }) => {
     const [message, setMessage] = useState('');
 
     const sendMessage = () => {
-        if ( message != '') {
+        if ( message !== '') {
             const timeStamp = Date.now();
             socket.emit('send_message', { username, room , message, timeStamp});
             setMessage('');
