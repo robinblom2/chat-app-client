@@ -13,7 +13,7 @@ const Messages = ({ socket }) => {
         {
           message: data.message,
           username: data.username,
-          timeStamp: data.timeStamp,
+          __createdtime__: data.__createdtime__,
         },
       ]);
     });
@@ -38,11 +38,13 @@ const Messages = ({ socket }) => {
 
 
   function sortMessages(messagesFromDB) {
-    return messagesFromDB.sort( (a,b) => parseInt(a.timeStamp) - parseInt(b.timeStamp));
+    return messagesFromDB.sort( (a,b) => parseInt(a.__createdtime__) - parseInt(b.__createdtime__));
   }
 
   function formatTimeStamp(timeStamp) {
+    console.log(timeStamp)
     const date = new Date(timeStamp);
+    console.log(date)
     return date.toLocaleString();
   }
 
@@ -51,7 +53,7 @@ const Messages = ({ socket }) => {
       {messagesFromDB.map((message, index) => (
         <div className="message" key={index}>
         <p>{message.username}</p>
-        <p>{formatTimeStamp(message.timeStamp)}</p>
+        <p>{formatTimeStamp(message.__createdtime__)}</p>
         <p>{message.message}</p>
         </div>
       ))}

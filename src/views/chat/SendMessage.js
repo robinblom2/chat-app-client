@@ -5,8 +5,9 @@ const SendMessage = ({ socket, username, room }) => {
 
     const sendMessage = () => {
         if ( message !== '') {
-            const timeStamp = Date.now();
-            socket.emit('send_message', { username, room , message, timeStamp});
+            const __createdtime__ = Date.now();
+            
+            socket.emit('send_message', { username, room , message, __createdtime__});
             setMessage('');
         }
     };

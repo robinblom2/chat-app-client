@@ -15,8 +15,8 @@ const RoomInfo = ( { socket, username, room } ) => {
     }, [socket]);
 
     const leaveRoom = () => {
-        const timeStamp = Date.now();
-        socket.emit('leave_room', { username, room, timeStamp});
+        const __createdtime__ = Date.now();
+        socket.emit('leave_room', { username, room, __createdtime__});
         navigate('/', {replace: true });
     }
 
