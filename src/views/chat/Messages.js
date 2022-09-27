@@ -1,7 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const Messages = ({ socket }) => {
   const [messagesFromDB, setMessagesFromDB] = useState([]);
+
+  const messagesContainerRef = useRef(null);
 
   useEffect(() => {
     socket.on("receive_message", (data) => {
@@ -18,13 +20,34 @@ const Messages = ({ socket }) => {
     return () => socket.off("receive_message");
   }, [socket]);
 
+  useEffect(() => {
+    socket.on('last_20_messages', (last20messages) => {
+      last20messages = JSON.parse(last20messages);
+      console.log(last20messages);
+      last20messages = sortMessages(last20messages);
+      setMessagesFromDB((dbState) => [...last20messages, ...dbState]);
+    });
+
+    return () => socket.off('last_20_messages')
+  }, [socket]);
+
+  useEffect(() => {
+    messagesContainerRef.current.scrollTop = 
+    messagesContainerRef.current.scrollHeight;
+  }, [messagesFromDB]);
+
+
+  function sortMessages(messagesFromDB) {
+    return messagesFromDB.sort( (a,b) => parseInt(a.timeStamp) - parseInt(b.timeStamp));
+  }
+
   function formatTimeStamp(timeStamp) {
     const date = new Date(timeStamp);
     return date.toLocaleString();
   }
 
   return (
-    <div className="messages-container">
+    <div className="messages-container" ref={messagesContainerRef}>
       {messagesFromDB.map((message, index) => (
         <div className="message" key={index}>
         <p>{message.username}</p>

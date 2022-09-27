@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import Select from "react-select";
+
 
 const Home = ({ username, setUsername, room, setRoom, socket }) => {
   const navigate = useNavigate();
@@ -36,11 +36,12 @@ const Home = ({ username, setUsername, room, setRoom, socket }) => {
           placeholder="Username..."
           onChange={(event) => setUsername(event.target.value)}
         />
-        <Select
-          options={options}
-          defaultValue={options[0]}
-          onChange={(event) => setRoom(event.target.value)}
-        />
+      <select onChange={(event) => setRoom(event.target.value)}>
+        <option value='default'>Please choose an option below...</option>
+        <option value='room1'>Room 1</option>
+        <option value='room2'>Room 2</option>
+        <option value='room3'>Room 3</option>
+      </select>
         <button onClick={joinRoom}>Join Room</button>
       </div>
     </div>
