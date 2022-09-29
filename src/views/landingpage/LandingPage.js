@@ -1,32 +1,46 @@
 import { useNavigate } from "react-router-dom";
+import landingpage from "./landingpage.css";
 
-
-
-const LandingPage = ({setUsername, username, socket }) => {
-
+const LandingPage = ({ setUsername, username, socket }) => {
   const navigate = useNavigate();
 
-  const handleLogIn = () =>{
-    console.log(username)
-    if(username === ''){
-      alert('You have not entered a username');
-      navigate('/', {replace: true});
-    }else {
-      socket.emit('join_server', {username})
-      navigate('/home', {replace: true})
+  const handleLogIn = () => {
+    console.log(username);
+    if (username === "") {
+      alert("You have not entered a username");
+      navigate("/", { replace: true });
+    } else {
+      socket.emit("join_server", { username });
+      navigate("/home", { replace: true });
     }
-  }
+  };
 
-  return <div>
-    <div>
-    <input
-        placeholder="Username..."
-        onChange={(event) => setUsername(event.target.value)}
-      />
-        <button onClick={handleLogIn}>Sign In</button>
+  return (
+    <div className="main-container">
+      <div className="login-box">
+        <form>
+          <div className="login-info">
+            <h1 className="login-title">Welcome</h1>
+            <p className="login-text">Please enter your username to log in...</p>
+          </div>
+          <div class="user-box">
+            <input
+              onChange={(event) => setUsername(event.target.value)}
+              required
+            />
+            <label>Name</label>
+          </div>
+          <a onClick={handleLogIn}>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            Join Chat
+          </a>
+        </form>
+      </div>
     </div>
-
-  </div>
-}
+  );
+};
 
 export default LandingPage;
