@@ -16,7 +16,7 @@ function App() {
     <Router>
       <div className="App">
         <Routes>
-          <Route path='/' element={<LandingPage setUsername={setUsername} username={username} />}/>
+          <Route path='/' element={<LandingPage setUsername={setUsername} username={username} socket={socket} />}/>
           <Route path='/home' element={ <Home 
             username={username} 
             room={room} 

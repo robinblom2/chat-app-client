@@ -3,17 +3,18 @@ import { useNavigate } from "react-router-dom";
 
 
 const Home = ({ username, room, setRoom, socket }) => {
-  const navigate = useNavigate();
-
   const [allUsers, setAllUsers] = useState([]);
+  
+  const navigate = useNavigate();
 
   useEffect(() => {
     socket.on('all_users', (data) => {
+      console.log(data);
       setAllUsers(data);
     })
 
     return () => socket.off('all_users');
-  }, [socket]);
+  }, [socket, allUsers]);
 
   const joinRoom = () => {
     if (room !== "" && username !== "") {
@@ -21,6 +22,11 @@ const Home = ({ username, room, setRoom, socket }) => {
     }
     navigate("/chatroom", { replace: true });
   };
+
+  const leaveServer = () => {
+    socket.emit('disconnect', {username});
+    navigate('/', { replace : true });
+  }
 
   const handlePrivateChat = () => {
     /* 
@@ -42,7 +48,7 @@ const Home = ({ username, room, setRoom, socket }) => {
               {allUsers.map((user) => (
                 <li style={{
                   fontWeight: `${user.username === username ? 'bold' : 'normal'}`,
-                }}key={user.id} onClick={handlePrivateChat}>{user.username}</li>
+                }} key={user.id} onClick={handlePrivateChat}>{user.username.username}</li>
               ))}
             </ul>
         </div>
@@ -53,6 +59,7 @@ const Home = ({ username, room, setRoom, socket }) => {
           <option value='room3'>Room 3</option>
         </select>
           <button onClick={joinRoom}>Join Room</button>
+          <button onClick={leaveServer}>Leave Server</button>
       </div>
     </div>
   );

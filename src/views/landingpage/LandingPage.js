@@ -1,7 +1,8 @@
 import { useNavigate } from "react-router-dom";
 
 
-const LandingPage = ({setUsername, username}) => {
+
+const LandingPage = ({setUsername, username, socket }) => {
 
   const navigate = useNavigate();
 
@@ -11,6 +12,7 @@ const LandingPage = ({setUsername, username}) => {
       alert('You have not entered a username');
       navigate('/', {replace: true});
     }else {
+      socket.emit('join_server', {username})
       navigate('/home', {replace: true})
     }
   }
