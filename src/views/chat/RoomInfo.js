@@ -20,16 +20,14 @@ const RoomInfo = ({ socket, username, room }) => {
     navigate("/", { replace: true });
   };
 
-  const handlePrivateChat = (obj) => {
-    //alert(obj);
-    //navigate('/private' , {replace: true});
+  const handlePrivateChat = (targetUser) => {
     let currentUser = roomUsers.filter((user) => {
-      if (user.name === username) {
-        return user.id;
+      if (user.username === username) {
+        return user;
       }
     });
+    navigate('/private' , { state: {targetUser, currentUser}});
 
-    alert(currentUser + "::" + obj);
     /*    tar in två användarnamn, sortera dessa efter alfabetisk ordning
           skapa sen ett rum med det namnet.
           hur gör vi så att den andra användaren blir kontaktad privat.
@@ -52,7 +50,7 @@ const RoomInfo = ({ socket, username, room }) => {
                 fontWeight: `${user.username === username ? "bold" : "normal"}`,
               }}
               key={user.id}
-              onClick={() => handlePrivateChat(user.id)}
+              onClick={() => handlePrivateChat(user)}
             >
               {user.username}
             </li>
