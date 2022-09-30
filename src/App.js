@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { io } from 'socket.io-client';
 import ChatRoom from './views/chat/ChatRoom';
 import LandingPage from './views/landingpage/LandingPage';
-import PrivateMessages from './views/chat/PrivateMessages';
+import PrivateChat from './views/privatechat/PrivateChat';
 
 const socket = io.connect('http://localhost:1337');
 
@@ -25,7 +25,7 @@ function App() {
             socket={socket}/>
           }/>
           <Route path="/chatroom" element={<ChatRoom socket={socket} username={username} room={room} />}/>
-          <Route path="/private" element={<PrivateMessages />} /> 
+          <Route path="/privatechat" element={<PrivateChat socket={socket}/>} /> 
         </Routes>
       </div>
     </Router>

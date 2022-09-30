@@ -1,11 +1,12 @@
-import { useEffect, useRef, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useEffect, /*useRef,*/ useState } from "react";
 
-const PrivateMessages = ({ socket }) => {
-  const [privateMsgsFromDB, setPrivateMsgsFromDB] = useState([]);
+const PrivateMessages = ({ targetUser, currentUser, socket }) => {
+  const [privateMessagesFromDB, setPrivateMessagesFromDB] = useState([]);
+
+  /*const messagesContainerRef = useRef(null);*/
   
-  const {state} = useLocation();
-  console.log(state);
+  /*const {state} = useLocation();
+  console.log(state);*/
 
   // TODO: kolla backend så detta är samma för
   // genrell och privat chatt.
@@ -22,7 +23,7 @@ const PrivateMessages = ({ socket }) => {
   useEffect(() => {
     socket.on("receive_private_message", (data) => {
       console.log(data);
-      setPrivateMsgsFromDB((dbState) => [
+      setPrivateMessagesFromDB((dbState) => [
         ...dbState,
         {
           message: data.message,
@@ -35,15 +36,25 @@ const PrivateMessages = ({ socket }) => {
   }, [socket]);
 
   useEffect(() => {
-    socket.on('last_20_private_messages', (last20messages) => {
-      last20messages = JSON.parse(last20messages);
-      console.log(last20messages);
-      last20messages = sortMessages(last20messages);
-      setPrivateMsgsFromDB((dbState) => [...last20messages, ...dbState]);
+    socket.on('last_20_private_messages', (last20PrivateMessages) => {
+      last20PrivateMessages = JSON.parse(last20PrivateMessages);
+      console.log(last20PrivateMessages);
+      last20PrivateMessages = sortMessages(last20PrivateMessages);
+      setPrivateMessagesFromDB((dbState) => [...last20PrivateMessages, ...dbState]);
     });
 
     return () => socket.off('last_20_private_messages')
   }, [socket]);
+
+  /*useEffect(() => {
+    messagesContainerRef.current.scrollTop = 
+    messagesContainerRef.current.scrollHeight;
+  }, [privateMessagesFromDB]);*/
+
+
+  function sortMessages(privateMessagesFromDB) {
+    return privateMessagesFromDB.sort( (a,b) => parseInt(a.__createdtime__) - parseInt(b.__createdtime__));
+  }
 
   function formatTimeStamp(timeStamp) {
     console.log(timeStamp)
@@ -52,18 +63,14 @@ const PrivateMessages = ({ socket }) => {
     return date.toLocaleString();
   }
 
-  function sortMessages(messageArray) {
-    return messageArray.sort( (a,b) => parseInt(a.__createdtime__) - parseInt(b.__createdtime__));
-  }
-
   
 
   return (
     <div className="private-messages-container">
-      <h1>{state.targetUser.username}</h1>
-      <p>{state.currentUser[0].username}</p>
+      <h1>{targetUser}</h1>
+      <p>{currentUser}</p>
 
-      {privateMsgsFromDB.map((message, index) => (
+      {privateMessagesFromDB.map((message, index) => (
         <div className="message" key={index}>
         <p>{message.username}</p>
         <p>{formatTimeStamp(message.__createdtime__)}</p>

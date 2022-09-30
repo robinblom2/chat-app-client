@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import landingpage from "./landingpage.css";
+import "./landingpage.css";
 
 const LandingPage = ({ setUsername, username, socket }) => {
   const navigate = useNavigate();
