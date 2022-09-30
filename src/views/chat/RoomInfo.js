@@ -26,7 +26,7 @@ const RoomInfo = ({ socket, username, room }) => {
         return user;
       }
     });
-    navigate('/private' , { state: {targetUser, currentUser}});
+    navigate("/private", { state: { targetUser, currentUser } });
 
     /*    tar in två användarnamn, sortera dessa efter alfabetisk ordning
           skapa sen ett rum med det namnet.
