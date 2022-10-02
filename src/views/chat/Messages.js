@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-const Messages = ({ socket }) => {
+const Messages = ({ socket, username, room }) => {
   const [messagesFromDB, setMessagesFromDB] = useState([]);
 
   const messagesContainerRef = useRef(null);

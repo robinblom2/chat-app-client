@@ -24,8 +24,8 @@ const RoomInfo = ({ socket, username, room }) => {
     roomUsers.filter((user) => {
       if (user.username === username) {
         if (targetUser.id !== user.id) {
-          socket.emit("join_private", {user, targetUser} )
-          navigate("/privatechat", { targetUser, user } );
+          socket.emit("join_private", { targetUser, user } )
+          navigate("/privatechat", { targetUser, user, socket, room } );
         } else {
           console.log("Cant chat with yourself");
         }

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "./home.css"
 
 
 const Home = ({ username, room, setRoom, socket }) => {

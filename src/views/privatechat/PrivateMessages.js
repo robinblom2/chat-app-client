@@ -1,7 +1,9 @@
-import { useEffect, /*useRef,*/ useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
-const PrivateMessages = ({ targetUser, currentUser, socket }) => {
+const PrivateMessages = ({ targetUser, currentUser, socket, room }) => {
   const [privateMessagesFromDB, setPrivateMessagesFromDB] = useState([]);
+
+  console.log(`Info about stuffs: ${targetUser} ${currentUser} ${socket}`);
 
   /*const messagesContainerRef = useRef(null);*/
   

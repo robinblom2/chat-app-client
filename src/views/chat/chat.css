@@ -1,0 +1,12 @@
+* {
+    color: white;
+    line-height: 1.5;
+}
+
+body {
+    background: linear-gradient(#141e30, #243b55);
+}
+
+button {
+    color: black;
+}
