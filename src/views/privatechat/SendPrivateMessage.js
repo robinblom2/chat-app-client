@@ -27,7 +27,7 @@ const SendPrivateMessage = ({ targetUser, currentUser, socket, room }) => {
         navigate('/chatroom', { replace: true }); // Add this
       }
 
-      useEffect(() => {
+    useEffect(() => {
         socket.on('chatroom_users', (data) => {
           console.log(data);
           setRoomUsers(data);

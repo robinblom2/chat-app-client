@@ -1,12 +1,22 @@
 * {
     color: white;
     line-height: 1.5;
+    box-sizing: border-box;
 }
 
 body {
     background: linear-gradient(#141e30, #243b55);
+    height: 100vh;
 }
 
 button {
+    color: black;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+.send-input {
     color: black;
 }

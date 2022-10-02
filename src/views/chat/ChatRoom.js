@@ -3,13 +3,13 @@ import RoomInfo from "./RoomInfo";
 import SendMessage from "./SendMessage";
 import "./chat.css"
 
-const ChatRoom = ({ socket, username, room }) => {
+const ChatRoom = ({ socket, currentUser, room }) => {
   return (
     <div>
-      <RoomInfo socket={socket} username={username} room={room}/>
+      <RoomInfo socket={socket} currentUser={currentUser} room={room}/>
       <div>
-        <Messages socket={socket} username={username} room={room}/>
-        <SendMessage socket={socket} username={username} room={room}/>
+        <Messages socket={socket} currentUser={currentUser} room={room}/>
+        <SendMessage socket={socket} currentUser={currentUser} room={room}/>
       </div>
     </div>
   );

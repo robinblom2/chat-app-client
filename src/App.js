@@ -12,20 +12,24 @@ const socket = io.connect('http://localhost:1337');
 function App() {
   const [username, setUsername] = useState('');
   const [room, setRoom] = useState('');
+  const [currentUser, setCurrentUser] = useState([]);
+  const [targetUser, setTargetUser] = useState([]);
 
   return (
     <Router>
       <div className="App">
         <Routes>
-          <Route path='/' element={<LandingPage setUsername={setUsername} username={username} socket={socket} />}/>
+          <Route path='/' element={<LandingPage setUsername={setUsername} username={username} socket={socket} currentUser={currentUser} setCurrentUser={setCurrentUser} />}/>
           <Route path='/home' element={ <Home 
             username={username} 
             room={room} 
             setRoom={setRoom} 
-            socket={socket}/>
+            socket={socket}
+            currentUser={currentUser}
+            setCurrentUser={setCurrentUser}/>
           }/>
-          <Route path="/chatroom" element={<ChatRoom socket={socket} username={username} room={room} />}/>
-          <Route path="/privatechat" element={<PrivateChat socket={socket}/>} /> 
+          <Route path="/chatroom" element={<ChatRoom socket={socket} username={username} room={room} targetUser={targetUser} setTargetUser={setTargetUser} currentUser={currentUser} />}/>
+          <Route path="/privatechat" element={<PrivateChat targetUser={targetUser} currentUser={currentUser} socket={socket} room={room}/>} /> 
         </Routes>
       </div>
     </Router>

@@ -1,12 +1,46 @@
 * {
     color: white;
     line-height: 1.5;
+    box-sizing: border-box;
 }
 
 body {
     background: linear-gradient(#141e30, #243b55);
 }
 
+.userList {
+    margin-bottom: 16px;
+}
+
+.roominfo-leave-button {
+    margin-bottom: 50px;
+}
+
 button {
+    color: black;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+.userName {
+    font-weight: bold;
+}
+
+.date {
+    text-decoration: underline;
+}
+
+.message {
+    border-top:1px;
+    box-shadow: 0px 4px rgba(255,255,255,0.3);
+}
+
+.messageText {
+    line-height: 4em;
+}
+
+.send-input {
     color: black;
 }

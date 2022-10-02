@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-const Messages = ({ socket, username, room }) => {
+const Messages = ({ socket, currentUser, room }) => {
   const [messagesFromDB, setMessagesFromDB] = useState([]);
 
   const messagesContainerRef = useRef(null);
@@ -52,9 +52,9 @@ const Messages = ({ socket, username, room }) => {
     <div className="messages-container" ref={messagesContainerRef}>
       {messagesFromDB.map((message, index) => (
         <div className="message" key={index}>
-        <p>{message.username}</p>
-        <p>{formatTimeStamp(message.__createdtime__)}</p>
-        <p>{message.message}</p>
+        <p className="userName">{message.username}</p>
+        <p className="date">{formatTimeStamp(message.__createdtime__)}</p>
+        <p className="messageText">{message.message}</p>
         </div>
       ))}
     </div>

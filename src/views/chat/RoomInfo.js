@@ -1,8 +1,12 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const RoomInfo = ({ socket, username, room }) => {
+const RoomInfo = ({ socket, currentUser, room }) => {
   const [roomUsers, setRoomUsers] = useState([]);
+
+  console.log("current User in room: " + JSON.stringify(currentUser));
+
+  let username = currentUser.username
 
   const navigate = useNavigate();
 
@@ -15,17 +19,20 @@ const RoomInfo = ({ socket, username, room }) => {
   }, [socket]);
 
   const leaveRoom = () => {
+    console.log("Before delete: " + JSON.stringify(currentUser));
     const __createdtime__ = Date.now();
-    socket.emit("leave_room", { username, room, __createdtime__ });
-    navigate("/", { replace: true });
+    socket.emit("leave_room", { currentUser, room, __createdtime__ });
+    delete currentUser.room
+    console.log("After delete: " + JSON.stringify(currentUser));
+    navigate("/home", { username, room, socket, currentUser, replace: true });
   };
 
-  const joinPrivate = (targetUser, username) => {
+  const joinPrivate = (targetUser, currentUser) => {
     roomUsers.filter((user) => {
-      if (user.username === username) {
-        if (targetUser.id !== user.id) {
-          socket.emit("join_private", { targetUser, user } )
-          navigate("/privatechat", { targetUser, user, socket, room } );
+      if (user.username === currentUser.username) {
+        if (targetUser.id !== currentUser.id) {
+          socket.emit("join_private", { targetUser, currentUser } )
+          navigate("/privatechat", { targetUser, currentUser, socket, room } );
         } else {
           console.log("Cant chat with yourself");
         }
@@ -49,9 +56,10 @@ const RoomInfo = ({ socket, username, room }) => {
         {roomUsers.length > 0 && <h5 className="users-title">Users :</h5>}
         <ul className="users-list">
           {roomUsers.map((user) => (
-            <li
+            <li className="userList"
               style={{
                 fontWeight: `${user.username === username ? "bold" : "normal"}`,
+                cursor: `${user.username === currentUser.username ? "" : "pointer"}`,
               }}
               key={user.id}
               onClick={() => joinPrivate(user, username)}

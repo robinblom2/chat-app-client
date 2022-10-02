@@ -1,7 +1,9 @@
 import { useState } from "react"
 
-const SendMessage = ({ socket, username, room }) => {
+const SendMessage = ({ socket, currentUser, room }) => {
     const [message, setMessage] = useState('');
+
+    let username = currentUser.username
 
     const sendMessage = () => {
         if ( message !== '') {
