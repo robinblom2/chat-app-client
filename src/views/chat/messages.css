@@ -1,0 +1,32 @@
+* {
+    color: white;
+}
+
+.message {
+    /* position: absolute; */
+    /* top: 50%; */
+    /* left: 50%; */
+    width: 400px;
+    padding: 20px;
+    margin: 30px;
+    /* transform: translate(-50%, -50%); */
+    background: rgba(0, 0, 0, 0.5);
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .message-header {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+  }
+
+  .message-body {
+    width: 90%;
+    
+    background-color: rgba(55, 55, 55, 0.5);
+  }

@@ -1,0 +1,25 @@
+.main-cr-container {
+    height: 100%;
+    /*background-image: url("../../../public/images/landing-bg.jpg");*/
+    background: linear-gradient(#141e30, #243b55);
+    display: flex;
+    flex: 1 100%;
+    width: 100vw;
+    
+    flex-direction: row;
+  }
+
+  .roominfo-cr-container {
+    flex-direction: column;
+    flex: 0;
+    padding: 20px;
+    border-right: 2px solid #03e9f4;
+    
+    
+  }
+
+  .messages-cr-container {
+    flex-direction: column;
+    flex: 1;
+    padding-bottom: 20px;
+  }

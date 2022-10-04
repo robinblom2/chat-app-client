@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import messages from './messages.css';
 
 const Messages = ({ socket }) => {
   const [messagesFromDB, setMessagesFromDB] = useState([]);
@@ -48,13 +49,20 @@ const Messages = ({ socket }) => {
     return date.toLocaleString();
   }
 
+  //TODO: ändra färg på den användare som är inloggad
+
   return (
     <div className="messages-container" ref={messagesContainerRef}>
       {messagesFromDB.map((message, index) => (
         <div className="message" key={index}>
-        <p>{message.username}</p>
-        <p>{formatTimeStamp(message.__createdtime__)}</p>
-        <p>{message.message}</p>
+          <div className="message-header">
+            <p>{message.username}</p>
+            <p>{formatTimeStamp(message.__createdtime__)}</p>
+          </div>
+          <div className="message-body">
+            <p>{message.message}</p>
+          </div>        
+        
         </div>
       ))}
     </div>

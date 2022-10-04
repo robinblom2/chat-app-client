@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import roominfo from "./roominfo.css";
 
 const RoomInfo = ({ socket, username, room }) => {
   const [roomUsers, setRoomUsers] = useState([]);
@@ -39,11 +40,11 @@ const RoomInfo = ({ socket, username, room }) => {
   //TODO: Kolla användarnamnet om det redan existerar vid skapandet. Så inte två personer har samma.
 
   return (
-    <div>
-      <h2 className="chatroom-title">{room}</h2>
+    <div className="roominfo-container">
+      <h2 className="roominfo-title">{room}</h2>
       <div>
-        {roomUsers.length > 0 && <h5 className="users-title">Users :</h5>}
-        <ul className="users-list">
+        {roomUsers.length > 0 && <h5 className="roominfo-users-title">Users :</h5>}
+        <ul className="roominfo-users-list">
           {roomUsers.map((user) => (
             <li
               style={{
