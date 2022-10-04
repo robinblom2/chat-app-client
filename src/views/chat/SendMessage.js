@@ -1,4 +1,5 @@
 import { useState } from "react"
+import sendMessages from "./sendMessages.css";
 
 const SendMessage = ({ socket, username, room }) => {
     const [message, setMessage] = useState('');
@@ -14,18 +15,20 @@ const SendMessage = ({ socket, username, room }) => {
 
     return (
         <div className="send-input-container">
-            <input
-                className="send-input"
-                placeholder="type here..."
-                onChange={(event) => setMessage(event.target.value)}
-                value={message}
-            />
-            <button 
-                className="send-input-button"
-                onClick={sendMessage}
-            >
-                Send Message
-            </button>
+            <div className="send-input-box">
+                 <input
+                    className="send-input"
+                    placeholder="Type message here..."
+                    onChange={(event) => setMessage(event.target.value)}
+                    value={message}
+                />
+                <button 
+                    className="send-input-button"
+                    onClick={sendMessage}
+                >
+                    Send
+                </button>
+            </div>
         </div>
     )
 }

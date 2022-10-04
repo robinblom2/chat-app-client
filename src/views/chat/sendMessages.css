@@ -1,0 +1,55 @@
+.send-input-container{
+  display: flex;
+  background-color: #243b55;
+  flex-direction: column;
+  height: 60px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.send-input-box{
+  background-color: #385371;
+  padding: 5px;
+  margin-left: 25px;
+  border-radius: 10px;
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: fixed;
+  bottom: 20px;
+  width: 90%;
+  z-index: 99;
+}
+
+.send-input {
+  background-color: #3c5775;
+  border: none;
+  height: 30px;
+  width: 80%;
+  padding-left: 20px;
+  font-size: 20px;
+}
+
+.send-input::placeholder{
+  color:aliceblue;
+}
+
+.send-input-button {
+  padding: 2px;
+  width: 120px;
+  border-radius: 5px;
+  align-self: center;
+  background-color: #243b55;    
+  border: 2px solid #03e9f4;
+  height: 30px;
+  font-size: 20px;
+}
+
+
+.send-input-button:hover{
+  cursor: pointer;
+  background-color: #3c5775;
+  color: #03e9f4; 
+}
