@@ -1,8 +1,15 @@
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import landingpage from "./landingpage.css";
 
 const LandingPage = ({ setUsername, username, socket }) => {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    socket.disconnect();
+    socket.connect();
+  }, []);
+  
 
   const handleLogIn = () => {
     console.log(username);

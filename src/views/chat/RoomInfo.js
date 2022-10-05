@@ -18,7 +18,7 @@ const RoomInfo = ({ socket, username, room }) => {
   const leaveRoom = () => {
     const __createdtime__ = Date.now();
     socket.emit("leave_room", { username, room, __createdtime__ });
-    navigate("/", { replace: true });
+    navigate("/home", { replace: true });
   };
 
   const handlePrivateChat = (targetUser) => {
@@ -41,26 +41,28 @@ const RoomInfo = ({ socket, username, room }) => {
 
   return (
     <div className="roominfo-container">
-      <h2 className="roominfo-title">{room}</h2>
-      <div>
-        {roomUsers.length > 0 && <h5 className="roominfo-users-title">Users :</h5>}
-        <ul className="roominfo-users-list">
-          {roomUsers.map((user) => (
-            <li
-              style={{
-                fontWeight: `${user.username === username ? "bold" : "normal"}`,
-              }}
-              key={user.id}
-              onClick={() => handlePrivateChat(user)}
-            >
-              {user.username}
-            </li>
-          ))}
-        </ul>
-      </div>
-      <button className="roominfo-leave-button" onClick={leaveRoom}>
-        Leave Room
-      </button>
+      <div className="roominfo-left-box">
+        <h2 className="roominfo-title">{room}</h2>
+          <div>
+            {roomUsers.length > 0 && <h5 className="roominfo-users-title">Users :</h5>}
+            <ul className="roominfo-users-list">
+              {roomUsers.map((user) => (
+                <li
+                  style={{
+                    fontWeight: `${user.username === username ? "bold" : "normal"}`,
+                  }}
+                  key={user.id}
+                  onClick={() => handlePrivateChat(user)}
+                >
+                  {user.username}
+                </li>
+              ))}
+            </ul>
+          </div>
+        <button className="roominfo-leave-button" onClick={leaveRoom}>
+          Leave Room
+        </button>
+        </div>
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import messages from './messages.css';
 
-const Messages = ({ socket }) => {
+const Messages = ({ socket, username }) => {
   const [messagesFromDB, setMessagesFromDB] = useState([]);
 
   const messagesContainerRef = useRef(null);
@@ -33,8 +33,7 @@ const Messages = ({ socket }) => {
   }, [socket]);
 
   useEffect(() => {
-    messagesContainerRef.current.scrollTop = 
-    messagesContainerRef.current.scrollHeight;
+    messagesContainerRef.current?.scrollIntoView({behavior: "smooth"});
   }, [messagesFromDB]);
 
 
@@ -52,10 +51,13 @@ const Messages = ({ socket }) => {
   //TODO: ändra färg på den användare som är inloggad
 
   return (
-    <div className="messages-container" ref={messagesContainerRef}>
+    <div className="messages-container">
+      <div className="messages-area">
       {messagesFromDB.map((message, index) => (
-        <div className="message" key={index}>
+        
+        <div className={message.username === username ? "message-user" : "message"} key={index}>
           <div className="message-header">
+            <img src={`https://avatars.dicebear.com/api/bottts/${message.username}.svg`} />
             <p>{message.username}</p>
             <p>{formatTimeStamp(message.__createdtime__)}</p>
           </div>
@@ -65,6 +67,9 @@ const Messages = ({ socket }) => {
         
         </div>
       ))}
+
+      </div>
+      <div ref={messagesContainerRef} />   
     </div>
   )
 

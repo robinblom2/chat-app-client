@@ -24,7 +24,7 @@ function App() {
             setRoom={setRoom} 
             socket={socket}/>
           }/>
-          <Route path="/chatroom" element={<ChatRoom socket={socket} username={username} room={room} />}/>
+          <Route path="/chatroom" element={<ChatRoom socket={socket} username={username} room={room} setRoom={setRoom} />}/>
           <Route path="/private" element={<PrivateMessages />} /> 
         </Routes>
       </div>

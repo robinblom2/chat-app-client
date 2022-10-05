@@ -3,7 +3,16 @@
     /*background-image: url("../../../public/images/landing-bg.jpg");*/
     /* background: linear-gradient(#141e30, #243b55); */
     display: flex;
-    flex-direction: column;
+    flex-direction: column;   
+    
+  }
+
+  .roominfo-left-box {
+    
+    position: fixed;
+    left: 10px;
+      
+    z-index: 999;
   }
   
   .roominfo-title {

@@ -10,7 +10,7 @@ const ChatRoom = ({ socket, username, room }) => {
       <RoomInfo socket={socket} username={username} room={room}/>
       </div>
       <div className="messages-cr-container">
-        <Messages socket={socket}/>
+        <Messages socket={socket} username={username}/>
         <SendMessage socket={socket} username={username} room={room}/>
       </div>
     </div>

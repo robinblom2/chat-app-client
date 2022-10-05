@@ -4,7 +4,7 @@
   background: linear-gradient(#141e30, #243b55);
   display: flex;
   flex-direction: column;
-  justify-content: end;
+  justify-content:flex-end;
 }
 
 .room-box {
@@ -19,8 +19,29 @@
   box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
   border-radius: 10px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
+}
+
+.room-box-text-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.room-box-text-container h1 {
+  padding: 0;
+  margin: 0;
+}
+
+.room-box-text-container p {
+  align-self: flex-start;
+  padding: 0 1.5em;
+}
+
+.room-box-selection-box {
+  justify-content: space-around;
+  height: auto;
+  display: flex;
 }
 
 .select-room-dropdown  {
@@ -43,9 +64,10 @@
 .select-room-dropdown::-ms-expand {
   display: none;
 }
-.select{
+
+.select {
   position: relative;
-  display: flex;
+  display: flex;  
   width: 20em;
   height: 3em;
   line-height: 3;
@@ -84,21 +106,32 @@
   cursor: pointer;
   border-color: #fff;
   color:#03e9f4;
+  box-shadow: 0px 0px 55px #03e9f4;
 }
 
-.leave-server-button{
+.join-room-leave-button-container {
+  height: 30%;
+  
+  
+}
+
+.leave-server-button {
+  color: #68748a;
   padding: 6px;
   width: 120px;
   border-radius: 5px;
   align-self: center;
   margin-top: 50px;
   background-color: #243b55;    
-  border: 2px solid #c00698;
-  margin-bottom: 500px;
+  border: 2px solid #141e30;
+
   font-size: 15px;
 }
 
 .leave-server-button:hover {
   cursor: pointer;
-  color: #c00698;
+  background-color: #03e9f4;
+  color: #243b55;
+  border: 2px solid white;
+  box-shadow: 0px 0px 50px #03e9f4;
 }

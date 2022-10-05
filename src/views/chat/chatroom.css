@@ -11,7 +11,7 @@
 
   .roominfo-cr-container {
     flex-direction: column;
-    flex: 0;
+    flex: 0.1;
     padding: 20px;
     border-right: 2px solid #03e9f4;
     
