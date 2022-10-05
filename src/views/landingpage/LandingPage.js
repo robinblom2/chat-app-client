@@ -30,7 +30,7 @@ const LandingPage = ({ setUsername, username, socket }) => {
             <h1 className="login-title">Welcome</h1>
             <p className="login-text">Please enter your username to log in...</p>
           </div>
-          <div class="user-box">
+          <div className="user-box">
             <input
               onChange={(event) => setUsername(event.target.value)}
               required

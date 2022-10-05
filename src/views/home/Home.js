@@ -6,6 +6,7 @@ import home from "./home.css"
 const Home = ({ username, room, setRoom, socket }) => {
   const [allUsers, setAllUsers] = useState([]);
   
+  
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -42,7 +43,7 @@ const Home = ({ username, room, setRoom, socket }) => {
         <div className="room-box-selection-box">
           <div className="select">
             <select className="select-room-dropdown" onChange={(event) => setRoom(event.target.value)}>
-              <option selected="true" disabled="true">Choose here</option>
+              <option value="" disabled={false}>Choose here</option>
               <option value='room1'>Room 1</option>
               <option value='room2'>Room 2</option>
               <option value='room3'>Room 3</option>

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import roominfo from "./roominfo.css";
 
-const RoomInfo = ({ socket, username, room }) => {
+const RoomInfo = ({ socket, username, room, setRoom }) => {
   const [roomUsers, setRoomUsers] = useState([]);
 
   const navigate = useNavigate();
@@ -17,7 +17,9 @@ const RoomInfo = ({ socket, username, room }) => {
 
   const leaveRoom = () => {
     const __createdtime__ = Date.now();
-    socket.emit("leave_room", { username, room, __createdtime__ });
+    let chosenRoom = room;
+    setRoom('')
+    socket.emit("leave_room", { username, chosenRoom, __createdtime__ });
     navigate("/home", { replace: true });
   };
 
