@@ -23,22 +23,6 @@ const RoomInfo = ({ socket, username, room, setRoom }) => {
     navigate("/home", { replace: true });
   };
 
-  const handlePrivateChat = (targetUser) => {
-    let currentUser = roomUsers.filter((user) => {
-      if (user.username === username) {
-        return user;
-      }
-    });
-    navigate("/private", { state: { targetUser, currentUser } });
-
-    /*    tar in två användarnamn, sortera dessa efter alfabetisk ordning
-          skapa sen ett rum med det namnet.
-          hur gör vi så att den andra användaren blir kontaktad privat.
-          hur ansluter den andra användaren till det här rummet. 
-          när användare1 initsierar chatt får användare2 en stjärna jämte användare1's namn
-          användare2 kan då klicka på användare1's namn och hamna i samma rum som honom.  */
-  };
-
   //TODO: Kolla användarnamnet om det redan existerar vid skapandet. Så inte två personer har samma.
 
   return (
@@ -54,7 +38,6 @@ const RoomInfo = ({ socket, username, room, setRoom }) => {
                     fontWeight: `${user.username === username ? "bold" : "normal"}`,
                   }}
                   key={user.id}
-                  onClick={() => handlePrivateChat(user)}
                 >
                   {user.username}
                 </li>
