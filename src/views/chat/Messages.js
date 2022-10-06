@@ -57,7 +57,7 @@ const Messages = ({ socket, username }) => {
         
         <div className={message.username === username ? "message-user" : "message"} key={index}>
           <div className="message-header">
-            <img src={`https://avatars.dicebear.com/api/bottts/${message.username}.svg`} />
+            <img src={`https://avatars.dicebear.com/api/bottts/${message.username}.svg`} alt='Dicebear Avatar' />
             <p>{message.username}</p>
             <p>{formatTimeStamp(message.__createdtime__)}</p>
           </div>

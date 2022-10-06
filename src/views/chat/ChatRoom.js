@@ -2,8 +2,22 @@ import Messages from "./Messages";
 import RoomInfo from "./RoomInfo";
 import SendMessage from "./SendMessage";
 import chatroom from './chatroom.css'
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+
+// TODO: Meddelande som varnar klilenten innan en reload sker??
 
 const ChatRoom = ({ socket, username, room, setRoom }) => {
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if(username === '') {
+      navigate('/', { replace : true })
+    }
+  }, [navigate, username]);
+  
+
   return (
     <div className="main-cr-container">
       <div className="roominfo-cr-container">

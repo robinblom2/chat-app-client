@@ -8,7 +8,7 @@ const LandingPage = ({ setUsername, username, socket }) => {
   useEffect(() => {
     socket.disconnect();
     socket.connect();
-  }, []);
+  }, [socket]);
   
 
   const handleLogIn = () => {
