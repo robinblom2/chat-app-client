@@ -6,6 +6,7 @@ const Messages = ({ socket, username }) => {
 
   const messagesContainerRef = useRef(null);
 
+  // När server får in ett nytt meddelande skickas en uppdaterad lista med det nya meddelandet ut till de anslutna klienterna
   useEffect(() => {
     socket.on("receive_message", (data) => {
       console.log(data);
@@ -21,6 +22,7 @@ const Messages = ({ socket, username }) => {
     return () => socket.off("receive_message");
   }, [socket]);
 
+  // Hämtar de senaste 20 meddelanderna ifrån servern
   useEffect(() => {
     socket.on('last_20_messages', (last20messages) => {
       last20messages = JSON.parse(last20messages);
@@ -32,11 +34,12 @@ const Messages = ({ socket, username }) => {
     return () => socket.off('last_20_messages')
   }, [socket]);
 
+  // Scrollar vyn till att visa det senaste meddelandet
   useEffect(() => {
     messagesContainerRef.current?.scrollIntoView({behavior: "smooth"});
   }, [messagesFromDB]);
 
-
+  // Sorterar meddelanden med deras timestamp så att de listas i kronologisk ordning
   function sortMessages(messagesFromDB) {
     return messagesFromDB.sort( (a,b) => parseInt(a.__createdtime__) - parseInt(b.__createdtime__));
   }

@@ -11,6 +11,7 @@ const ChatRoom = ({ socket, username, room, setRoom }) => {
 
   const navigate = useNavigate();
 
+  // En redirect ifall en refresh sker eftersom session-state töms (annars får användaren tillbaka en tomt chatrum)
   useEffect(() => {
     if(username === '') {
       navigate('/', { replace : true })

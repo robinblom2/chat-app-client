@@ -5,6 +5,7 @@ import landingpage from "./landingpage.css";
 const LandingPage = ({ setUsername, username, socket }) => {
   const navigate = useNavigate();
 
+  // Ser till så att användare byter socket när de joinar igen
   useEffect(() => {
     socket.disconnect();
     socket.connect();

@@ -7,9 +7,11 @@ const RoomInfo = ({ socket, username, room, setRoom }) => {
 
   const navigate = useNavigate();
 
+  // Frontend får data från backend om vilka användare som är anslutna till rummet
   useEffect(() => {
     socket.on("chatroom_users", (data) => {
       setRoomUsers(data);
+      console.log(roomUsers); // Ta bort sen
     });
 
     return () => socket.off("chatroom_users");

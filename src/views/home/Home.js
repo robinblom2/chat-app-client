@@ -4,19 +4,8 @@ import home from "./home.css"
 
 
 const Home = ({ username, room, setRoom, socket }) => {
-  const [allUsers, setAllUsers] = useState([]);
-  
   
   const navigate = useNavigate();
-
-  useEffect(() => {
-    socket.on('all_users', (data) => {
-      console.log(data);
-      setAllUsers(data);
-    })
-
-    return () => socket.off('all_users');
-  }, [socket, allUsers]);
 
   const joinRoom = () => {
     if (room !== "" && username !== "") {
@@ -28,7 +17,6 @@ const Home = ({ username, room, setRoom, socket }) => {
   };
 
   const leaveServer = () => {
-    //socket.emit('disconnect', {username});
     navigate('/', { replace : true });
   }
 

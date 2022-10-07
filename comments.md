@@ -16,11 +16,19 @@ Fördelen med det är att man begränsar framför allt requestsen som frontend b
 Vi valde att använda Axios för att vi kände att det var lite lättare att jobba med jämfört med Fetch. Delar av gruppen hade erfarenhet sedan innan, och detta gjorde att vi kunde komma igång med det relativt smidigt.
 
 
+### Varför implementerade vi inte Privata Meddelanden
+I grund och botten kände vi att tiden började springa iväg och vi skulle inte ha tillräckligt med tid för att få till en funktionalitet som vi skulle bli nöjda med.
+Vi tog därmed ett gemensamt beslut att skala ner applikationens omfång och återgå till grundfunktionaliteten och se till så att den fungerade som den skulle. 
+
+Vår idé för Privata Meddelanden innrbar att vi skulle, efter inloggning innan man valt ett rum, kunna klicka på en inloggad användares namn för att sedan föras vidare till en privat chatt med denna användare. 
+Man skulle även kunna klicka på en annan användare inne i ett grupp-chattrum och tas till ett privat chattrum med denna användaren. 
+
 # FrontEnd specifikt:
 
 ### Varför vi inte valde ett Style-bibliotek: 
 Vi kände att vi ville fokusera på uppgiften i sig, snarare än att lära oss ett nytt designbibliotek. Därför var Tailwind ute ur leken. Detta eftersom vi hade fått spendera mycket tid till att lära oss tailwinds dokumentation istället för att spendera tid på "det som är viktigt".
 Vi kände att vi ville göra stylen personlig, och ha fria tyglar att anpassa dess utseende som vi ville. 
+Vi designade LandingPage först och därmed utgjorde den lite utav en mall för hur resten utav applikationen skulle se ut. 
 
 
 ### App.js: 
@@ -34,4 +42,5 @@ Vi har diskuterat olika lösningar, framförallt att via backend ha en bättre k
 Vi jobbade på en ytterliggare lösning, men valde att skapa en grundläggande lösning, med lösningen framför allt så att användaren inte får upp ett tomt chattrum helt plötsligt. 
 
 Hade detta varit ett större och längre projekt, med en definierad målgrupp(vem ska använda chatt appen, är det för företag eller privatpersoner), hade man kunna ha detta som bas, och bygga ut utökat funktionalitet, och säkerhet med ett användarsystem där backend hanterar mer av detta. 
+
 

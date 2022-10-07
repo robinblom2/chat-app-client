@@ -4,6 +4,7 @@ import sendMessages from "./sendMessages.css";
 const SendMessage = ({ socket, username, room }) => {
     const [message, setMessage] = useState('');
 
+    // Skickar användarens meddelande till servern
     const sendMessage = () => {
         if ( message !== '') {
             const __createdtime__ = Date.now();
