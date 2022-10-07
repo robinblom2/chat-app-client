@@ -11,7 +11,6 @@ const RoomInfo = ({ socket, username, room, setRoom }) => {
   useEffect(() => {
     socket.on("chatroom_users", (data) => {
       setRoomUsers(data);
-      console.log(roomUsers); // Ta bort sen
     });
 
     return () => socket.off("chatroom_users");
