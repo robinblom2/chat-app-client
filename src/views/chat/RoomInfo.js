@@ -23,8 +23,6 @@ const RoomInfo = ({ socket, username, room, setRoom }) => {
     navigate("/home", { replace: true });
   };
 
-  //TODO: Kolla användarnamnet om det redan existerar vid skapandet. Så inte två personer har samma.
-
   return (
     <div className="roominfo-container">
       <div className="roominfo-left-box">

@@ -5,7 +5,7 @@ import chatroom from './chatroom.css'
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
-// TODO: Meddelande som varnar klilenten innan en reload sker??
+// Chatroom
 
 const ChatRoom = ({ socket, username, room, setRoom }) => {
 

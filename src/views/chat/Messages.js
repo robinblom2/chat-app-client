@@ -48,8 +48,6 @@ const Messages = ({ socket, username }) => {
     return date.toLocaleString();
   }
 
-  //TODO: ändra färg på den användare som är inloggad
-
   return (
     <div className="messages-container">
       <div className="messages-area">
